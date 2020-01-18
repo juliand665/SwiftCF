@@ -66,16 +66,8 @@ extension CFError: CFType {
     public static let typeID = CFErrorGetTypeID()
 }
 
-extension CFFileDescriptor: CFType {
-    public static let typeID = CFFileDescriptorGetTypeID()
-}
-
 extension CFLocale: CFType {
     public static let typeID = CFLocaleGetTypeID()
-}
-
-extension CFMachPort: CFType {
-    public static let typeID = CFMachPortGetTypeID()
 }
 
 extension CFMessagePort: CFType {
@@ -138,10 +130,6 @@ extension CFString: CFType {
     public static let typeID = CFStringGetTypeID()
 }
 
-extension CFStringTokenizer: CFType {
-    public static let typeID = CFStringTokenizerGetTypeID()
-}
-
 extension CFTimeZone: CFType {
     public static let typeID = CFTimeZoneGetTypeID()
 }
@@ -154,12 +142,6 @@ extension CFURL: CFType {
     public static let typeID = CFURLGetTypeID()
 }
 
-#if os(macOS)
-extension CFUserNotification: CFType {
-    public static let typeID = CFUserNotificationGetTypeID()
-}
-#endif
-
 extension CFUUID: CFType {
     public static let typeID = CFUUIDGetTypeID()
 }
@@ -167,6 +149,30 @@ extension CFUUID: CFType {
 extension CFWriteStream: CFType {
     public static let typeID = CFWriteStreamGetTypeID()
 }
+
+#if os(macOS)
+
+extension CFUserNotification: CFType {
+    public static let typeID = CFUserNotificationGetTypeID()
+}
+
+#endif
+
+#if canImport(Darwin)
+
+extension CFFileDescriptor: CFType {
+    public static let typeID = CFFileDescriptorGetTypeID()
+}
+
+extension CFMachPort: CFType {
+    public static let typeID = CFMachPortGetTypeID()
+}
+
+extension CFStringTokenizer: CFType {
+    public static let typeID = CFStringTokenizerGetTypeID()
+}
+
+#endif
 
 // MARK: - Mutable Type
 

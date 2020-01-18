@@ -1,4 +1,7 @@
+#if canImport(Darwin)
+
 import Foundation
+import CoreFoundation
 
 // MARK: NSBridged
 
@@ -196,3 +199,5 @@ extension CFURL: CFTollFreeBridgingNSType, CFTollFreeBridgingSwiftType {
 extension CFWriteStream: CFTollFreeBridgingNSType {
     public typealias BridgedNSType = OutputStream
 }
+
+#endif

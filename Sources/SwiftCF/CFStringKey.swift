@@ -1,6 +1,9 @@
-import Foundation
+#if canImport(Darwin)
 
-public protocol CFStringKey: RawRepresentable, ReferenceConvertible, ExpressibleByStringLiteral where RawValue == CFString, ReferenceType == NSString, _ObjectiveCType == NSString {
+import Foundation
+import CoreFoundation
+
+public protocol CFStringKey: RawRepresentable, ReferenceConvertible, ExpressibleByStringLiteral where RawValue == CFString, ReferenceType == NSString {
     init(_ key: CFString)
 }
 
@@ -11,7 +14,7 @@ public extension CFStringKey {
     }
     
     init(stringLiteral value: String) {
-        self.init(value as CFString)
+        self.init(value as NSString as CFString)
     }
     
     var description: String {
@@ -39,3 +42,5 @@ public extension CFStringKey {
         return .init(.from(source!))
     }
 }
+
+#endif

@@ -1,3 +1,5 @@
+#if canImport(Darwin)
+
 import CoreFoundation
 
 @inlinable public func cfCast<T: CFType>(_ v: Any, to type: T.Type = T.self) -> T? {
@@ -67,3 +69,5 @@ public extension CFTollFreeBridgingNSType where Self: CFMutableType {
         return cfCast(v, to: Self.self)
     }
 }
+
+#endif

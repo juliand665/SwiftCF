@@ -1,3 +1,5 @@
+#if canImport(Darwin)
+
 import CoreFoundation
 
 public extension CFStringTokenizer {
@@ -78,3 +80,5 @@ extension CFStringTokenizer: IteratorProtocol {
         return advanceToNextToken()
     }
 }
+
+#endif

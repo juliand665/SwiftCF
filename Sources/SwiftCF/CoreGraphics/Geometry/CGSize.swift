@@ -1,6 +1,4 @@
-#if canImport(CoreGraphics)
-
-import CoreGraphics
+import Foundation
 
 public extension CGSize {
     
@@ -61,10 +59,4 @@ public extension CGSize {
     @inlinable static func /=(size: inout CGSize, scalar: CGFloat) {
         size = size / scalar
     }
-    
-    @inlinable mutating func apply(t: CGAffineTransform) {
-        self = applying(t)
-    }
 }
-
-#endif // canImport(CoreGraphics)
