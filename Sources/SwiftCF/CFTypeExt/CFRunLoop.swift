@@ -3,7 +3,6 @@ import Foundation
 
 public extension CFRunLoop {
     
-    typealias Mode = CFRunLoopMode
     typealias Source = CFRunLoopSource
     typealias Observer = CFRunLoopObserver
     typealias Timer = CFRunLoopTimer
@@ -101,10 +100,34 @@ public extension CFRunLoop {
 
 // MARK: - Mode
 
+#if canImport(Darwin)
+
+public extension CFRunLoop {
+    typealias Mode = CFRunLoopMode
+}
+
+#else
+
+public extension CFRunLoop {
+    
+    public struct Mode: CFStringKey {
+        
+        public let rawValue: String
+
+        public init(_ key: String) {
+            rawValue = key
+        }
+    }
+}
+
 public extension CFRunLoop.Mode {
     
+    static let defaultMode = kCFRunLoopDefaultMode as CFRunLoop.Mode
     
+    static let commonModes = kCFRunLoopCommonModes as CFRunLoop.Mode
 }
+
+#endif
 
 // MARK: - Source
 
